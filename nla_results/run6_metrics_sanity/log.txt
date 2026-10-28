@@ -1,0 +1,78 @@
+started Tue Oct 27 01:26:16 CDT 2026
+Loading from checkpoints/prosqa_coconut/coconut/checkpoint_49.
+/path/to/coconut-main/tsrigo.py:32: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  saved_weights = torch.load(
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+<All keys matched successfully>
+Activations: train=1800, val=96, test=600
+Predict-train-mean baseline MSE: val=0.948101, test=0.947054
+Per-thought-index mean MSE: val FVE +0.041, test FVE +0.040
+Teacher explanations: distinct=1800/1800, tokens mean 57.0 max 63 (explanation limit 64), e.g. ['### Tom is a zhorpus. Not jompus. Thought 1: Tom is a bompus. Lens: ### Every . p mp us w z a ren imp is y ? h | DW Ze oz WR Zi WB Sz GW WD DR WS CW OW WW MPH', '### Tom is a zhorpus. Not jompus. Thought 2: Every bompus is a wumpus. Lens: ### z Every p us . is imp w y g h ren mp n | Zi Zurich Z CentOS Zah Za Sz Zamb Zoom Zip Zig Zan Zimmerman Zer Ze']
+Coconut accuracy: val 16/16, test 99/100; frontier vocab 55 names, val frontier size mean 2.16, empty for 32/96 rows
+Teacher-text val frontier recall 0.304 vs probe 0.135, precision 0.211 vs probe 0.094
+[119s] Step 0: val_loss=0.948102 (FVE -0.000, vs index mean -0.042) *, distinct=8/96, explanations=[' a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l.', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n']
+  FVE raw space -0.000, per thought [-0.000 +0.000 +0.000 +0.000 +0.000 +0.000]
+  SFT NLL real 22.314, shuffled 22.310 (gap -0.004); teacher-text FVE -0.000
+  frontier recall NLA 0.000 vs probe 0.000, precision NLA 0.000 vs probe 0.000
+  fidelity: parse-fail 1.000; answer 0.000, species 0.000, step 0.000, index 0.000; per k species [0.00 0.00 0.00 0.00 0.00 0.00] step [0.00 0.00 0.00 0.00 0.00 0.00]; Coconut right (16 q) species 0.000 step 0.000, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical -0.000 (drop +0.000, 0% changed), lens_shuffle -0.000 (drop +0.000, 0% changed), reworded -0.000 (drop +0.000, 0% changed)
+[230s] Warm-start step 100/300: nll=2.817, train_loss=0.675366, val_loss=0.763062 (FVE +0.195, vs index mean +0.161) *, distinct=62/96, explanations=['### Eva is a lempus. Not rorpus. Thought 1: Every impus is a lempus. Lens: ### r Every us . p imp is er ? l | ren el mp Rip rip rall Rex RT rc destro rs srf', '### Sam is a scrompus. Not scrompus. Thought 4: Every scrompus is a scrompus. Lens: ### sc Every us p . imp is a g | Scout scan scans Scan scout scouting scanners scanner scanned scroll craw bookmark', '### Sam is a scrompus. Not scrompus. Thought 5: Done. Lens: ### sc Every us p . imp is a g | Lens scan scans Scan scanners scanner scanned scouting scout Scout Sc']
+  FVE raw space +0.255, per thought [+0.104 +0.228 +0.227 +0.217 +0.220 +0.216]
+  SFT NLL real 3.242, shuffled 3.426 (gap +0.184); teacher-text FVE +0.258
+  frontier recall NLA 0.116 vs probe 0.111, precision NLA 0.112 vs probe 0.107
+  fidelity: parse-fail 0.010; answer 0.062, species 0.771, step 0.083, index 0.271; per k species [0.69 0.88 0.81 0.75 0.75 0.75] step [0.00 0.00 0.00 0.06 0.25 0.19]; Coconut right (16 q) species 0.771 step 0.083, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.195 (drop -0.000, 0% changed), lens_shuffle +0.196 (drop -0.001, 99% changed), reworded +0.196 (drop -0.001, 99% changed)
+[338s] Warm-start step 200/300: nll=2.328, train_loss=0.648114, val_loss=0.740788 (FVE +0.219, vs index mean +0.186) *, distinct=70/96, explanations=['### Eva is a lempus. Not rorpus. Thought 1: Every lorpus is a lempus. Lens: ### Every lempus is . p l a r imp ? el | Leopard Le Lance Luxem Luxembourg Laf LE Lens Lafayette', '### Oliver is a scrompus. Not lempus. Thought 1: Every zhorpus is a scrompus. Lens: ### sc Every us . r is ? l a z h g | SC Sail Scar Sc Craw Starcraft Scout Scala Scal scroll Scrib Scrolls Sche Scroll', '### Oliver is a scrompus. Not lempus. Thought 3: Every scrompus is a scrompus. Lens: ### sc Every us . is a r l ? er g w | scrolls scroll Scrolls Sail Sc SC scan Starcraft Scout scout Scrib Scroll Scan Craw']
+  FVE raw space +0.417, per thought [+0.176 +0.239 +0.235 +0.229 +0.228 +0.223]
+  SFT NLL real 3.037, shuffled 3.490 (gap +0.453); teacher-text FVE +0.339
+  frontier recall NLA 0.135 vs probe 0.126, precision NLA 0.114 vs probe 0.106
+  fidelity: parse-fail 0.000; answer 0.177, species 0.708, step 0.062, index 0.354; per k species [0.44 0.81 0.75 0.75 0.75 0.75] step [0.00 0.00 0.00 0.06 0.12 0.19]; Coconut right (16 q) species 0.708 step 0.062, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.219 (drop +0.000, 0% changed), lens_shuffle +0.203 (drop +0.016, 100% changed), reworded +0.221 (drop -0.002, 100% changed)
+[450s] Warm-start step 300/300: nll=1.617, train_loss=0.311714, val_loss=0.709809 (FVE +0.251, vs index mean +0.220) *, distinct=78/96, explanations=['### Tom is a lempus. Not gerpus. Thought 1: Tom is a lorpus. Lens: ### Every p . us l er ? mp a imp el | Laf Lance Luxem サーティワン Ler Jere Francois François French', '### Sam is a scrompus. Not lempus. Thought 1: Sam is a scrompus. Lens: ### Every p us . er ? l a sc y ren imp z | Sail Scout Sc scan Scan Sche Sz scroll Templ Scala', '### Sam is a scrompus. Not lempus. Thought 4: Done. Lens: ### sc Every p . us ? er a l y g r h | rom Scout scan scroll Sail scout Sc Sche scrolls Templ Scrib subsc']
+  FVE raw space +0.412, per thought [+0.248 +0.247 +0.252 +0.250 +0.256 +0.257]
+  SFT NLL real 3.080, shuffled 3.824 (gap +0.744); teacher-text FVE +0.338
+  frontier recall NLA 0.111 vs probe 0.116, precision NLA 0.113 vs probe 0.118
+  fidelity: parse-fail 0.000; answer 0.208, species 0.865, step 0.292, index 0.323; per k species [0.62 0.88 0.88 0.94 0.94 0.94] step [0.00 0.00 0.00 0.19 0.75 0.81]; Coconut right (16 q) species 0.865 step 0.292, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.251 (drop +0.000, 0% changed), lens_shuffle +0.237 (drop +0.014, 100% changed), reworded +0.255 (drop -0.004, 100% changed)
+[473s] RL step 10/30: train_loss=0.556610 (batch mean), kl=0.01, val_loss=0.701964 (FVE +0.260, vs index mean +0.228) *, distinct=74/96, explanations=['### Tom is a lempus. Not gerpus. Thought 1: Tom is a lorpus. Lens: ### Every . p us l er ? mp a el t | Laf Lance Francois François Serge Ler Jere Emanuel', '### Sam is a scrompus. Not lempus. Thought 1: Sam is a scrompus. Lens: ### Every p us . er ? l a sc y ren imp z | Sail Scout Sc Sche Templ Scala Sz SC scan Scan scroll', '### Sam is a scrompus. Not lempus. Thought 4: Done. Lens: ### sc Every p . us ? er l y is imp r a | rom Templ Sc Sail Scout Sz scroll scan Scan Sche Scrib']
+  FVE raw space +0.443, per thought [+0.254 +0.252 +0.264 +0.266 +0.266 +0.258]
+  SFT NLL real 3.086, shuffled 3.835 (gap +0.749); teacher-text FVE +0.343
+  frontier recall NLA 0.116 vs probe 0.116, precision NLA 0.117 vs probe 0.117
+  fidelity: parse-fail 0.000; answer 0.219, species 0.833, step 0.302, index 0.323; per k species [0.62 0.88 0.88 0.88 0.88 0.88] step [0.00 0.00 0.00 0.19 0.75 0.88]; Coconut right (16 q) species 0.833 step 0.302, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.260 (drop -0.000, 0% changed), lens_shuffle +0.241 (drop +0.018, 100% changed), reworded +0.263 (drop -0.003, 100% changed)
+[496s] RL step 20/30: train_loss=0.883955 (batch mean), kl=0.25, val_loss=0.695048 (FVE +0.267, vs index mean +0.236) *, distinct=71/96, explanations=['### Tom is a lempus. Not gerpus. Thought 1: Tom is a lorpus. Lens: ### lempus. Lens p Every . us ? er l a ren imp el | Laf Lance Dele サーティワン Ler Le Gard Lil', '### Sam is a scrompus. Not lempus. Thought 1: Sam is a scrompus. Lens: ### Every p us . er ? l a sc y ren imp z | Sail Scout Sc Sche Templ Scala Sz SC scan Scan scroll', '### Sam is a scrompus. Not lempus. Thought 4: Done. Lens: ### sc Every p . us y er ? l a z h | rom Scout scan scroll Sail Sc Sche scrolls Templ Scrib subsc scout']
+  FVE raw space +0.452, per thought [+0.261 +0.259 +0.271 +0.274 +0.272 +0.267]
+  SFT NLL real 3.085, shuffled 3.834 (gap +0.749); teacher-text FVE +0.346
+  frontier recall NLA 0.116 vs probe 0.116, precision NLA 0.118 vs probe 0.118
+  fidelity: parse-fail 0.000; answer 0.219, species 0.833, step 0.302, index 0.323; per k species [0.62 0.88 0.88 0.88 0.88 0.88] step [0.00 0.00 0.00 0.19 0.75 0.88]; Coconut right (16 q) species 0.833 step 0.302, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.267 (drop +0.000, 0% changed), lens_shuffle +0.247 (drop +0.020, 100% changed), reworded +0.269 (drop -0.002, 100% changed)
+[519s] RL step 30/30: train_loss=0.468521 (batch mean), kl=0.08, val_loss=0.693660 (FVE +0.268, vs index mean +0.237) *, distinct=79/96, explanations=['### Tom is a lempus. Not gerpus. Thought 1: Tom is a lorpus. Lens: ### Every . p us l er ? mp a el t | Laf Lance Francois François Serge Ler Jere Emanuel', '### Sam is a scrompus. Not lempus. Thought 1: Sam is a scrompus. Lens: ### Every p us . er ? l a sc y ren imp z | Sail Scout Sc Sche Templ Scala Sz SC scan Scan scroll', '### Sam is a scrompus. Not lempus. Thought 4: Done. Lens: ### sc Every p . us ? er l y is imp r a | rom Templ Sc Sail Scout Sz scroll scan Scan Sche Scrib']
+  FVE raw space +0.458, per thought [+0.274 +0.256 +0.265 +0.274 +0.274 +0.266]
+  SFT NLL real 3.084, shuffled 3.831 (gap +0.748); teacher-text FVE +0.350
+  frontier recall NLA 0.116 vs probe 0.116, precision NLA 0.117 vs probe 0.117
+  fidelity: parse-fail 0.000; answer 0.219, species 0.833, step 0.292, index 0.323; per k species [0.62 0.88 0.88 0.88 0.88 0.88] step [0.00 0.00 0.00 0.19 0.75 0.81]; Coconut right (16 q) species 0.833 step 0.292, Coconut wrong (0 q) species n/a step n/a
+  paraphrase FVE: canonical +0.268 (drop +0.000, 0% changed), lens_shuffle +0.249 (drop +0.020, 100% changed), reworded +0.269 (drop -0.000, 100% changed)
+
+Best val loss: 0.693660 (FVE +0.268)
+Final NLA test reconstruction loss: 0.662425 (FVE +0.301, vs index mean +0.271, raw space +0.345), distinct=460/600
+  FVE raw space +0.345, per thought [+0.308 +0.277 +0.301 +0.305 +0.303 +0.305]
+  SFT NLL real 2.975, shuffled 3.687 (gap +0.712); teacher-text FVE +0.401
+  frontier recall NLA 0.124 vs probe 0.104, precision NLA 0.121 vs probe 0.102
+  fidelity: parse-fail 0.000; answer 0.145, species 0.805, step 0.310, index 0.335; per k species [0.75 0.84 0.82 0.82 0.80 0.80] step [0.00 0.00 0.00 0.35 0.69 0.82]; Coconut right (99 q) species 0.803 step 0.310, Coconut wrong (1 q) species 1.000 step 0.333
+  paraphrase FVE: canonical +0.301 (drop +0.000, 0% changed), lens_shuffle +0.288 (drop +0.012, 100% changed), reworded +0.303 (drop -0.003, 100% changed)
+Test explanations: ['### Polly is a zhorpus. Not grimpus. Thought 1: Polly is a tumpus. Lens: ### z Every p . us mp h is imp t a y el | Zi Zan Manz Zhu Zhou Benz Naz Zak Z Zh Zhao', '### Eva is a hilpus. Not sterpus. Thought 3: Every hilpus is a yumpus. Lens: ### h Every . p us is ? er a y g b | サーティワン Hale Hib Hik Hau Hancock HAL Hanson Hawai Honolulu Hawaii Hawaiian HI', '### Eva is a hilpus. Not sterpus. Thought 5: Done. Lens: ### h Every p . us is ? imp y g ren ster a | サーティワン Hale Hib Hik Honolulu Hawaii Hawai HAL Hanson HIP Hancock Hann HI', '### Eva is a hilpus. Not sterpus. Thought 5: Done. Lens: ### h Every p . us is imp y ? ster a g ren | サーティワン Hale Hib Hanson Hik HIP Hancock HAL Hind Hawai Honolulu Hawaii Hawaiian HI', '### Eva is a hilpus. Not sterpus. Thought 5: Done. Lens: ### h Every p . us is imp y ? ster a g ren | サーティワン Hale Hik Hib Hanson Honolulu Hawaii Hawai Hancock HAL KH Hua Hin Hau', '### Eva is a hilpus. Not sterpus. Thought 5: Done. Lens: ### h Every p . us is imp y ? ster a g b | サーティワン Hale Hib Hanson Hik Hab Hancock HAL Hind Hau Hua Hin Hy Honolulu Hawai']
+elapsed: 538s, peak GPU memory in training: 5.11 GiB
+Splice self-check: clean-loop answers differing from Coconut's 0/100, latent max abs diff 9.16e-05
+Splice all six latents (100 questions, spliced = AR/mean/shuffled): accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 1 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 2 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 3 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 4 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 5 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+Splice thought 6 only: accuracy clean 0.990 spliced 0.990/0.990/0.990 recovered vs shuffled n/a vs mean n/a; agreement clean 1.000 spliced 1.000/1.000/1.000 recovered vs shuffled n/a vs mean n/a; log-prob clean -0.015 spliced -0.015/-0.015/-0.015 recovered vs shuffled n/a vs mean n/a
+elapsed: 559s
+[49s] Question-only AR step 33/100: train_loss=0.735845, val_loss=0.786472 (FVE +0.170) *
+[95s] Question-only AR step 66/100: train_loss=0.555451, val_loss=0.680918 (FVE +0.282) *
+[138s] Question-only AR step 99/100: train_loss=0.433584, val_loss=0.616108 (FVE +0.350) *
+Question-only AR: best val FVE +0.350, test loss 0.559062 (FVE +0.410); NLA minus question-only test FVE -0.109
+finished Tue Oct 27 01:38:16 CDT 2026

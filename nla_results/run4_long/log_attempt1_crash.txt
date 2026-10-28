@@ -1,0 +1,35 @@
+started Mon Oct 26 00:34:39 CDT 2026
+Loading from checkpoints/prosqa_coconut/coconut/checkpoint_49.
+<All keys matched successfully>
+Activations: train=60000, val=384, test=3000
+Predict-train-mean baseline MSE: val=0.956023, test=0.952908
+Per-thought-index mean MSE: val FVE +0.041, test FVE +0.042
+[935s] Step 0: val_loss=0.956023 (FVE -0.000) *, distinct=14/384, explanations=[' a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l.', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n']
+Traceback (most recent call last):
+  File "/path/to/coconut-main/test_NLA.py", line 943, in <module>
+    main()
+  File "/path/to/coconut-main/test_NLA.py", line 931, in main
+    run_nla_experiment(
+  File "/path/to/coconut-main/test_NLA.py", line 746, in run_nla_experiment
+    train_teacher = teacher_explanations(
+                    ^^^^^^^^^^^^^^^^^^^^^
+  File "/path/to/coconut-main/test_NLA.py", line 330, in teacher_explanations
+    lenses.append(lens_tokens(model, activations, tokenizer, config.lens_tokens))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/path/to/coconut-main/test_NLA.py", line 275, in lens_tokens
+    logits = lens_logits(model, activations, tokenizer)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/path/to/coconut-main/test_NLA.py", line 238, in lens_logits
+    return model.base_causallm.lm_head(activations)[:, : tokenizer.eos_token_id]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA driver error: device not ready
+finished Mon Oct 26 01:21:03 CDT 2026

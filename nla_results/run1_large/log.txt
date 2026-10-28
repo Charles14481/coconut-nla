@@ -1,0 +1,21 @@
+Loading from checkpoints/prosqa_coconut/coconut/checkpoint_49.
+<All keys matched successfully>
+Activations: train=30000, val=600, test=3000
+Predict-train-mean baseline MSE: val=0.968636, test=0.953186
+Per-thought-index mean MSE: val FVE +0.042, test FVE +0.042
+NLA step 0/300: val_loss=0.968636 (FVE -0.000), distinct=47/600, explanations=[' a quus. is imp rimpper or rem', ' a quus. is or imp lerpel ker', ' a quus. is or imp lerpel g']
+Teacher explanations: distinct=646/30000, e.g. ['### Tom is a zhorpus.']
+Warm-start step 400/2000: nll=0.325, train_loss=0.615319, val_loss=0.697976 (FVE +0.279) *, teacher-text val FVE +0.294, distinct=114/600, explanations=['### Davis is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+Warm-start step 800/2000: nll=0.365, train_loss=0.691024, val_loss=0.712637 (FVE +0.264), teacher-text val FVE +0.296, distinct=109/600, explanations=['### Wren is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+Warm-start step 1200/2000: nll=0.238, train_loss=0.701905, val_loss=0.686663 (FVE +0.291) *, teacher-text val FVE +0.300, distinct=124/600, explanations=['### Sally is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+Warm-start step 1600/2000: nll=0.226, train_loss=0.606569, val_loss=0.686340 (FVE +0.291) *, teacher-text val FVE +0.295, distinct=144/600, explanations=['### Fae is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+Warm-start step 2000/2000: nll=0.163, train_loss=0.639610, val_loss=0.680685 (FVE +0.297) *, teacher-text val FVE +0.289, distinct=153/600, explanations=['### Rex is a lempus.', '### Tom is a scrompus.', '### Sam is a scrompus.']
+NLA step 60/300: train_loss=0.877683 (batch mean), kl=-0.08, val_loss=0.688431 (FVE +0.289), distinct=149/600, explanations=['### Rex is a lempus.', '### Fae is a scrompus.', '### Jack is a scrompus.']
+NLA step 120/300: train_loss=0.671201 (batch mean), kl=0.30, val_loss=0.688608 (FVE +0.289), distinct=141/600, explanations=['### Rex is a lempus.', '### Tom is a scrompus.', '### Sam is a scrompus.']
+NLA step 180/300: train_loss=0.757665 (batch mean), kl=0.11, val_loss=0.702863 (FVE +0.274), distinct=149/600, explanations=['### Rex is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+NLA step 240/300: train_loss=0.706496 (batch mean), kl=-0.01, val_loss=0.702148 (FVE +0.275), distinct=142/600, explanations=['### Rex is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+NLA step 300/300: train_loss=0.781481 (batch mean), kl=0.01, val_loss=0.692351 (FVE +0.285), distinct=142/600, explanations=['### Rex is a lempus.', '### Sam is a scrompus.', '### Sam is a scrompus.']
+
+Best val loss: 0.680685 (FVE +0.297)
+Final NLA test reconstruction loss: 0.668985 (FVE +0.298), distinct=407/3000
+elapsed: 2085s

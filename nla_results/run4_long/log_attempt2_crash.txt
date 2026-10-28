@@ -1,0 +1,57 @@
+started Mon Oct 26 01:24:31 CDT 2026
+Loading from checkpoints/prosqa_coconut/coconut/checkpoint_49.
+<All keys matched successfully>
+Activations: train=60000, val=384, test=3000
+Predict-train-mean baseline MSE: val=0.956023, test=0.952908
+Per-thought-index mean MSE: val FVE +0.041, test FVE +0.042
+[938s] Step 0: val_loss=0.956023 (FVE -0.000) *, distinct=14/384, explanations=[' a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l. a ger l.', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n', ' a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n a l.\n']
+Teacher explanations: distinct=60000/60000, tokens mean 57.0 max 65 (explanation limit 64), e.g. ['### Tom is a zhorpus. Not jompus. Thought 1: Tom is a bompus. Lens: ### Every . p mp us w z a ren imp is y ? h | DW Ze oz WR WB WD Zi DR WS OW GW Sz DOWN WW MPH', '### Tom is a zhorpus. Not jompus. Thought 2: Every bompus is a wumpus. Lens: ### z Every p us . is imp w y g h ren mp n | Zurich Zi Z CentOS Za Zip Zoom Zah Zamb Sz Zer AZ Zan Zimmerman Zig']
+Traceback (most recent call last):
+  File "/path/to/coconut-main/test_NLA.py", line 946, in <module>
+    main()
+  File "/path/to/coconut-main/test_NLA.py", line 934, in main
+    run_nla_experiment(
+  File "/path/to/coconut-main/test_NLA.py", line 804, in run_nla_experiment
+    (reconstruct_activations(ar, head, tokenizer, val_teacher) - val_targets) ** 2
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/path/to/coconut-main/test_NLA.py", line 555, in reconstruct_activations
+    hidden = model.transformer(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1132, in forward
+    outputs = block(
+              ^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 652, in forward
+    feed_forward_hidden_states = self.mlp(hidden_states)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 576, in forward
+    hidden_states = self.act(hidden_states)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/miniconda3/envs/coconut/lib/python3.12/site-packages/transformers/activations.py", line 56, in forward
+    return 0.5 * input * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (input + 0.044715 * torch.pow(input, 3.0))))
+                                                                               ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: CUDA driver error: device not ready
+finished Mon Oct 26 02:29:45 CDT 2026

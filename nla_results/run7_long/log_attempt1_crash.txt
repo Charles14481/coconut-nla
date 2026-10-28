@@ -1,0 +1,7 @@
+started Tue Oct 27 01:38:41 CDT 2026
+Traceback (most recent call last):
+  File "/path/to/coconut-main/test_NLA.py", line 25, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+exit code 1
+finished Tue Oct 27 01:38:41 CDT 2026
